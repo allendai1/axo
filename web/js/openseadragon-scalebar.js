@@ -23,6 +23,7 @@
 
     $.Viewer.prototype.scalebar = function(options) {
         if (!this.scalebarInstance) {
+
             options = options || {};
             options.viewer = this;
             this.scalebarInstance = new $.Scalebar(options);
@@ -89,12 +90,23 @@
             throw new Error("A viewer must be specified.");
         }
         this.viewer = options.viewer;
-
         this.divElt = document.createElement("div");
         this.viewer.container.appendChild(this.divElt);
         this.divElt.style.position = "relative";
         this.divElt.style.margin = "0";
         this.divElt.style.pointerEvents = "none";
+
+
+        // this.canvas = document.createElement('canvas');
+        // this.viewer.container.appendChild(this.canvas);
+        // this.canvas.id = "cornerstone-element";
+        // this.canvas.style.position = 'absolute';
+        // this.canvas.style.top = '0';
+        // this.canvas.style.background = 'green';
+        // this.canvas.style.width = "1706px";
+        // this.canvas.style.height = "1358px";
+
+
 
         this.setMinWidth(options.minWidth || "150px");
 
@@ -120,9 +132,12 @@
         });
         this.viewer.addHandler("animation", function() {
             self.refresh();
+
         });
         this.viewer.addHandler("resize", function() {
+
             self.refresh();
+
         });
     };
 
@@ -225,7 +240,7 @@
          * 2 attributes: size and text containing the size of the scale bar and the text.
          * default: $.ScalebarSizeAndTextRenderer.METRIC_LENGTH
          */
-        refresh: function(options) {
+        refresh: function(options) { // open
             this.updateOptions(options);
 
             if (!this.viewer.isOpen() ||
@@ -243,13 +258,15 @@
                     viewport.getZoom(true));
             var currentPPM = zoom * this.pixelsPerMeter;
             var props = this.sizeAndTextRenderer(currentPPM, this.minWidth);
-
+            console.log("before drawscalebar")
             this.drawScalebar(props.size, props.text);
+            console.log('after drawscalebar')
             var location = this.getScalebarLocation();
             this.divElt.style.left = location.x + "px";
             this.divElt.style.top = location.y + "px";
         },
         drawMicroscopyScalebar: function(size, text) {
+            console.log("drawmicroscopyscalebar")
             this.divElt.style.fontSize = this.fontSize;
             this.divElt.style.textAlign = "center";
             this.divElt.style.color = this.fontColor;
@@ -258,6 +275,14 @@
             this.divElt.style.backgroundColor = this.backgroundColor;
             this.divElt.innerHTML = text;
             this.divElt.style.width = size + "px";
+            // var ctx = this.viewer.drawer.canvas.getContext("2d");
+            // var ctx2 = this.canvas.getContext("2d");
+            // console.log(ctx);
+            // console.log(ctx2);
+            // ctx.drawImage(this.canvas,250,250);
+            // document.getElementsByClassName("openseadragon-container");
+            
+
         },
         drawMapScalebar: function(size, text) {
             this.divElt.style.fontSize = this.fontSize;
@@ -349,6 +374,7 @@
          * @returns {Element} A canvas containing the scalebar representation
          */
         getAsCanvas: function() {
+            
             var canvas = document.createElement("canvas");
             canvas.width = this.divElt.offsetWidth;
             canvas.height = this.divElt.offsetHeight;
