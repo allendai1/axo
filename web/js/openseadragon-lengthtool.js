@@ -57,7 +57,7 @@
     this.divElt.style.position = 'relative'
     this.divElt.style.margin = '0'
     this.divElt.style.pointerEvents = 'none'
-    const ccanvas = document.getElementById('canvas');
+    // const ccanvas = document.getElementById('canvas');
     // const dataURL = ccanvas.toDataURL();
     // console.log(dataURL);
 
@@ -98,20 +98,14 @@
     },
 
     drawLengthTool: function () {
-      this.divElt.classList.add('cornerstone-element')
-      this.divElt.style.fontSize = '0.9em'
-      this.divElt.style.color = 'white'
+    //   this.divElt.classList.add('cornerstone-element')
+      this.divElt.style.fontSize = 97
       this.divElt.style.textAlign = 'center'
-      this.divElt.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-      this.divElt.innerHTML = 'MEASUREMENTS'
-      this.divElt.style.width = '220px'
-      this.divElt.style.position = 'absolute'
-      this.divElt.style.fontFamily = 'sans-serif'
-      this.divElt.style.top = '50px'
-      this.divElt.style.padding = '10px'
-      this.divElt.style.zIndex = 1000;
-
-      this.divElt.style.height = '120px'
+      this.divElt.style.color = 'yellow'
+      this.divElt.style.border = 'none'
+      this.divElt.style.borderBottom = 2 + 'px solid ' + 'yellow'
+    //   this.divElt.style.backgroundColor = 'green'
+      this.divElt.style.width = 16 + 'px'
     },
 
     /**
