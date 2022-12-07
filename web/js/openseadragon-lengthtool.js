@@ -1,4 +1,7 @@
-;(function ($) {
+
+
+(function ($) {
+  
   if (!$.version || $.version.major < 2) {
     throw new Error(
       'This version of OpenSeadragonLengthTool requires ' +
@@ -38,25 +41,25 @@
     this.viewer = options.viewer
 
     this.divElt = document.createElement('div')
-    this.canvas = document.createElement('canvas')
+    // this.canvas = document.createElement('canvas')
     this.viewer.container.appendChild(this.divElt)
     this.viewer.container.prepend(this.canvas)
 
-    this.viewer.container.appendChild(this.canvas)
-    this.canvas.id = 'canvas'
-    this.canvas.style.position = 'absolute'
-    this.canvas.style.top = '0'
-    this.canvas.style.background = 'green'
-    this.canvas.style.width = '1706px'
-    this.canvas.style.height = '1358px'
-    this.canvas.style.opacity = "25%";
+    // this.viewer.container.appendChild(this.canvas)
+    // this.canvas.id = 'canvas'
+    // this.canvas.style.position = 'absolute'
+    // this.canvas.style.top = '0'
+    // this.canvas.style.background = 'green'
+    // this.canvas.style.width = '1706px'
+    // this.canvas.style.height = '1358px'
+    // this.canvas.style.opacity = "25%";
 
     this.divElt.style.position = 'relative'
     this.divElt.style.margin = '0'
     this.divElt.style.pointerEvents = 'none'
     const ccanvas = document.getElementById('canvas');
-    const dataURL = ccanvas.toDataURL();
-    console.log(dataURL);
+    // const dataURL = ccanvas.toDataURL();
+    // console.log(dataURL);
 
 
     var self = this
@@ -96,15 +99,19 @@
 
     drawLengthTool: function () {
       this.divElt.classList.add('cornerstone-element')
-      this.divElt.style.fontSize = 97
+      this.divElt.style.fontSize = '0.9em'
+      this.divElt.style.color = 'white'
       this.divElt.style.textAlign = 'center'
-      this.divElt.style.color = 'yellow'
-      this.divElt.style.border = 'none'
-      this.divElt.style.borderBottom = 2 + 'px solid ' + 'yellow'
-      this.divElt.style.backgroundColor = 'green'
-    //   this.divElt.innerHTML = 'TESTTESTTESTTEST'
-      this.divElt.style.width = 16 + 'px'
-      console.log(this.divElt)
+      this.divElt.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+      this.divElt.innerHTML = 'MEASUREMENTS'
+      this.divElt.style.width = '220px'
+      this.divElt.style.position = 'absolute'
+      this.divElt.style.fontFamily = 'sans-serif'
+      this.divElt.style.top = '50px'
+      this.divElt.style.padding = '10px'
+      this.divElt.style.zIndex = 1000;
+
+      this.divElt.style.height = '120px'
     },
 
     /**

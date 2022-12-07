@@ -258,15 +258,12 @@
                     viewport.getZoom(true));
             var currentPPM = zoom * this.pixelsPerMeter;
             var props = this.sizeAndTextRenderer(currentPPM, this.minWidth);
-            console.log("before drawscalebar")
             this.drawScalebar(props.size, props.text);
-            console.log('after drawscalebar')
             var location = this.getScalebarLocation();
             this.divElt.style.left = location.x + "px";
             this.divElt.style.top = location.y + "px";
         },
         drawMicroscopyScalebar: function(size, text) {
-            console.log("drawmicroscopyscalebar")
             this.divElt.style.fontSize = this.fontSize;
             this.divElt.style.textAlign = "center";
             this.divElt.style.color = this.fontColor;

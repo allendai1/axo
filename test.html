@@ -52,7 +52,6 @@
         ctx.lineTo(200, 100);
         ctx.stroke();
         const dataURL = c.toDataURL("image/jpeg");
-
         // Display an image
         const imageId =
           'https://www.asteris.biz/Keystone/ImageDownload.aspx?ClinicCode=TESTKEYSTONE&ImageId=01b1755e-33d1-4b24-b9af-a4a019689d5f&ImageType=PreviewImage&FrameIndex=0'
@@ -60,9 +59,24 @@
           cornerstone.displayImage(element, image)
         })
         const canvas = document.getElementById('canvas');
+        const cornerstoneCanvas = document.getElementsByClassName("cornerstone-canvas")[0];
+        // ctx.drawImage(can, 0, 0);
+
+
+        ctx.fillStyle = 'rgba(255,0,0,.4)';
+        ctx.fillRect(20, 20, 20, 80);
+        ctx.fillStyle = 'rgba(205,255,23,.4)';
+        ctx.fillRect(30, 30, 40, 50);
+        ctx.fillStyle = 'rgba(5,255,0,.4)';
+        ctx.fillRect(40, 50, 80, 20);
+        // draw something behind the cornerstone canvas
+        const ctx2 = cornerstoneCanvas.getContext('2d')
+        ctx2.fillStyle = "blue";
+        ctx2.fillRect(0, 0, cornerstoneCanvas.width, cornerstoneCanvas.height);
+        ctx2.drawImage(c, 50,50);
+
 
         
-        // console.log(dataURL); 
 
       }
     </script>
